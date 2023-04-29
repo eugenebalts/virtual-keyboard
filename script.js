@@ -35,6 +35,26 @@ function fillKeyboard() {
                 switch (key) {
                     case 'Space' : button.classList.add('keyboard__key_space');
                     break;
+                    case 'Tab' : button.classList.add('keyboard__key_tab');
+                    break;
+                    case 'Del' : button.classList.add('keyboard__key_del');
+                    break;
+                    case 'Shift' : button.classList.add('keyboard__key_shift');
+                    break;
+                    case 'RShift' : button.classList.add('keyboard__key_shift');
+                    break;
+                    case 'Alt' : button.classList.add('keyboard__key_alt');
+                    break;
+                    case 'RAlt' : button.classList.add('keyboard__key_alt');
+                    break;
+                    case 'Win' : button.classList.add('keyboard__key_win');
+                    break;
+                    case 'Ctrl' : button.classList.add('keyboard__key_ctrl');
+                    break;
+                    case 'RCtrl' : button.classList.add('keyboard__key_ctrl');
+                    break;
+                    case 'Caps Lock' : button.classList.add('keyboard__key_caps-lock');
+                    break;
                 }
                 button.innerHTML = key;
                 row.append(button);

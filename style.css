@@ -13,7 +13,7 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
+    min-width: 100%;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@ body {
     margin: 0 auto;
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .keyboard__arrows {
@@ -50,7 +50,7 @@ body {
 
 .keyboard__arrows .keyboard__key:nth-child(1) {
     grid-column: 2/4;
-    width: 50px;
+    max-width: 50px;
 }
 
 .keyboard__key {
@@ -70,10 +70,33 @@ body {
 }
 
 .keyboard__key_space {
-    min-width: 50%;
+    min-width: 53%;
     align-items: center;
     justify-content: center;
-} 
+}
+
+.keyboard__key_tab {
+    min-width: 9%;
+}
+
+.keyboard__key_del {
+    min-width: 8%;
+}
+
+.keyboard__key_shift {
+    min-width: 15%;
+}
+
+.keyboard__key_ctrl,
+.keyboard__key_win,
+.keyboard__key_alt {
+    min-width: 8%;
+}
+
+.keyboard__key_caps-lock {
+    max-width: 10%;
+}
+
 
 .keyboard__key:active,
 .keyboard__key_activate {
