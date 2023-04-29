@@ -46,16 +46,20 @@ function fillKeyboard() {
 
     let arrowsWrapper = document.createElement('div');
     arrowsWrapper.classList.add('keyboard__arrows')
+
     for (let keyRow in keys) {
         if (keyRow !== 'arrows') {  // Create container with all keys without arrows
             let row = document.createElement('div');
             row.classList.add('keyboard__row');
             for (let i = 0; i < keys[keyRow].length; i++) {
                 let key = keys[keyRow][i];
+
                 let button = document.createElement('div');
                 button.classList.add('keyboard__key-container');
+
                 let mainKey = document.createElement('div');
                 mainKey.classList.add('keyboard__key');
+
                 switch (key) {
                     case 'Space' : button.classList.add('keyboard__key_space');
                     break;
@@ -80,9 +84,12 @@ function fillKeyboard() {
                     case 'Caps Lock' : button.classList.add('keyboard__key_caps-lock');
                     break;
                 }
+
                 mainKey.innerHTML = key;
-                button.append(mainKey)
+                button.append(mainKey);
+
                 for (let property in shiftPairs) {
+                    // Add additional symbols for shift-combinations (en)
                     if (key == property) {
                         let shiftKey = document.createElement('div');
                         shiftKey.classList.add('keyboard__shift-key')
@@ -93,7 +100,9 @@ function fillKeyboard() {
                 row.append(button);
                 keyboardKeys.append(row)
             }
-        } else { // Create container with arrows
+
+        } else {
+            // Create container with arrows
             for (let i = 0; i < keys[keyRow].length; i++) {
                 let key = keys[keyRow][i];
                 console.log(typeof key === 'String' ? key.toUpperCase() : false);
@@ -109,5 +118,6 @@ function fillKeyboard() {
         }
     }
 }
+
 fillKeyboard()
 
