@@ -164,7 +164,9 @@ function fillKeyboard() {
 fillKeyboard()
 
 // Const focus on textarea
-document.addEventListener('click', (e) => {
+document.querySelector('.keyboard').addEventListener('click', (e) => {
     document.querySelector('.input-zone__textarea').focus();
 })
+
+
 
