@@ -8,6 +8,40 @@ body {
     background-color: bisque;
 }
 
+/* TEXTAREA*/
+.input-zone {
+    max-width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-zone__text-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
+.input-zone__title {
+    font-size: 32px;
+    text-align: center;
+}
+
+.input-zone__textarea {
+    width: 70%;
+    height: 150px;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+}
+
+
 /* KEYBOARD */
 .keyboard {
     position: fixed;
@@ -69,6 +103,7 @@ body {
     cursor: pointer;
     user-select: none;
 }
+
 
 .keyboard__key {
     font-weight: 500;

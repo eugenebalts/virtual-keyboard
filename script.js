@@ -7,9 +7,9 @@ let keys = { //Rows of a symbols
     foursRow: ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'RShift'],
     fivesRow: ['Ctrl', 'Win', 'Alt', 'Space', 'RAlt', 'RCtrl'],
     arrows: ['↑', '←', '↓', '→']
-    }
+}
 
-    let shiftPairs = {
+let shiftPairs = {
         '`': '~',
         1: '!',
         2: '@',
@@ -31,12 +31,53 @@ let keys = { //Rows of a symbols
         ',': '<',
         '.': '>',
         '/': '?'
+}
+
+
+// Create textarea and rules 
+function createTextarea() {
+    let inputZone = document.createElement('section');
+    inputZone.classList.add('input-zone');
+
+    let textInfo = document.createElement('div');
+    textInfo.classList.add('input-zone__text-info')
+
+    let title = document.createElement('h1');
+    title.classList.add('input-zone__title');
+    title.innerHTML = 'Rules for my keyboard';
+
+    let list = document.createElement('ol');
+    list.classList.add('input-zone__list');
+
+    function setRules(rule) {
+        let li = document.createElement('li');
+        li.classList.add('input-zone__list-item');
+        li.innerHTML = rule;
+        list.append(li);
     }
+
+    setRules('Click on textarea and keyboard will open!');
+    setRules('Combination "Alt + Shift" changes a language (EN, RU)');
+
+    let textarea = document.createElement('textarea');
+    textarea.classList.add('input-zone__textarea');
+    textarea.placeholder = 'Я хочу, чтоб ты написал в меня. Распиши меня полностью!';
+
+
+    textInfo.append(title);
+    textInfo.append(list)
+    inputZone.append(textInfo);
+    inputZone.append(textarea);
+    body.append(inputZone);
+}
+
+createTextarea()
 
 // Create keyboard
 function fillKeyboard() {
     let keyboard = document.createElement('div');
     keyboard.classList.add('keyboard');
+    // keyboard.classList.add('keyboard', 'keyboard_hidden');
 
     let keyboardKeys = document.createElement('div');
     keyboardKeys.classList.add('keyboard__keys');
