@@ -102,6 +102,7 @@ body {
     text-align: start;
     cursor: pointer;
     user-select: none;
+    box-shadow: -2px 2px 2px rgba(0, 0, 0, .6);
 }
 
 
@@ -144,5 +145,9 @@ body {
 
 .keyboard__key-container:active,
 .keyboard__key-container_activate {
-    background-color: rgba(0, 122, 122, .7);
+    position: relative;
+    top: 2px;
+    left: -2px;
+    background-color: rgba(0, 122, 225, .7);
+    box-shadow: none;
 }
