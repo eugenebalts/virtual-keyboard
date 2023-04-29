@@ -62,6 +62,7 @@ function createTextarea() {
     let textarea = document.createElement('textarea');
     textarea.classList.add('input-zone__textarea');
     textarea.placeholder = 'Я хочу, чтоб ты написал в меня. Распиши меня полностью!';
+    textarea.setAttribute('autofocus', 1)
 
 
     textInfo.append(title);
@@ -161,4 +162,9 @@ function fillKeyboard() {
 }
 
 fillKeyboard()
+
+// Const focus on textarea
+document.addEventListener('click', (e) => {
+    document.querySelector('.input-zone__textarea').focus();
+})
 
