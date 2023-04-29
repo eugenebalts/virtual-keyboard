@@ -59,16 +59,24 @@ function createTextarea() {
     setRules('Click on textarea and keyboard will open!');
     setRules('Combination "Alt + Shift" changes a language (EN, RU)');
 
+    let textareaContainer = document.createElement('div');
+    textareaContainer.classList.add('input-zone__textarea-container')
+
     let textarea = document.createElement('textarea');
     textarea.classList.add('input-zone__textarea');
     textarea.placeholder = 'Я хочу, чтоб ты написал в меня. Распиши меня полностью!';
-    textarea.setAttribute('autofocus', 1)
+    // textarea.setAttribute('autofocus', 1)
 
+    let keyboardIcon = document.createElement('div');
+    keyboardIcon.classList.add('input-zone__keyboard-icon');
+    keyboardIcon.innerHTML = '<img src="assets/keyboard.png" alt="icon">'
 
     textInfo.append(title);
     textInfo.append(list)
     inputZone.append(textInfo);
-    inputZone.append(textarea);
+    textareaContainer.append(textarea)
+    textareaContainer.append(keyboardIcon)
+    inputZone.append(textareaContainer);
     body.append(inputZone);
 }
 
@@ -77,7 +85,7 @@ createTextarea()
 // Create keyboard
 function fillKeyboard() {
     let keyboard = document.createElement('div');
-    keyboard.classList.add('keyboard');
+    keyboard.classList.add('keyboard', 'keyboard_hidden');
     // keyboard.classList.add('keyboard', 'keyboard_hidden');
 
     let keyboardKeys = document.createElement('div');
@@ -164,9 +172,25 @@ function fillKeyboard() {
 fillKeyboard()
 
 // Const focus on textarea
-document.querySelector('.keyboard').addEventListener('click', (e) => {
+const keyboard = document.querySelector('.keyboard');
+
+keyboard.addEventListener('click', (e) => {
     document.querySelector('.input-zone__textarea').focus();
 })
+
+// Open-close keyboard
+
+const keyboardIcon = document.querySelector('.input-zone__keyboard-icon');
+const textarea = document.querySelector('.input-zone__textarea');
+
+textarea.addEventListener('click', (e) => {
+    keyboard.classList.remove('keyboard_hidden')
+})
+
+keyboardIcon.addEventListener('click', () => {
+    keyboard.classList.toggle('keyboard_hidden')
+});
+
 
 
 
