@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: bisque;
+}
+
+/* KEYBOARD */
+.keyboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    background-color: rgba(0, 122, 122, .4);
+    transition: bottom .2s ease;
+}
+
+.keyboard_hidden {
+    bottom: -100%;
+}
+
+.keyboard__keys {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.keyboard__row {
+    min-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.keyboard__arrows {
+    align-self: flex-end;
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 10px;
+}
+
+.keyboard__arrows .keyboard__key:nth-child(1) {
+    grid-column: 2/4;
+    width: 50px;
+}
+
+.keyboard__key {
+    display: flex;
+    flex-direction: column;
+    min-width: 50px;
+    height: 50px;
+    padding: 5px 15px 5px 5px;
+    letter-spacing: .1rem;
+    color: white;
+    background-color: rgba(0, 122, 122, 1);
+    border-radius: 5px;
+    border: none;
+    text-align: start;
+    cursor: pointer;
+    user-select: none;
+}
+
+.keyboard__key_space {
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+} 
+
+.keyboard__key:active,
+.keyboard__key_activate {
+    background-color: rgba(0, 122, 122, .7);
+}
