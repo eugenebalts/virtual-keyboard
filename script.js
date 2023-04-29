@@ -23,13 +23,11 @@ function fillKeyboard() {
     let arrowsWrapper = document.createElement('div');
     arrowsWrapper.classList.add('keyboard__arrows')
     for (let keyRow in keys) {
-        let row = document.createElement('div');
-        row.classList.add('keyboard__row');
-
-        if (keyRow !== 'arrows') { // Create container with all keys without arrows
+        if (keyRow !== 'arrows') {  // Create container with all keys without arrows
+            let row = document.createElement('div');
+            row.classList.add('keyboard__row');
             for (let i = 0; i < keys[keyRow].length; i++) {
                 let key = keys[keyRow][i];
-                console.log(typeof key === 'String' ? key.toUpperCase() : false);
                 let button = document.createElement('button');
                 button.classList.add('keyboard__key');
                 switch (key) {
@@ -58,6 +56,7 @@ function fillKeyboard() {
                 }
                 button.innerHTML = key;
                 row.append(button);
+                keyboardKeys.append(row)
             }
         } else { // Create container with arrows
             for (let i = 0; i < keys[keyRow].length; i++) {
@@ -67,10 +66,9 @@ function fillKeyboard() {
                 button.classList.add('keyboard__key');
                 button.innerHTML = key;
                 arrowsWrapper.append(button);
+                keyboard.append(arrowsWrapper)
             }
         }
-        keyboardKeys.append(row)
-        keyboard.append(arrowsWrapper)
     }
 }
 fillKeyboard()
