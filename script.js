@@ -2,9 +2,9 @@ const body = document.querySelector("body");
 
 let keys = { //Rows of a symbols
     firstRow: ['`', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '-', '=', 'Backspace'],
-    secondRow: ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Del'],
-    thirdRow: ['Caps Lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", '\x2F', 'Enter'],
-    foursRow: ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'RShift'],
+    secondRow: ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Delete'],
+    thirdRow: ['Caps Lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", '\\', 'Enter'],
+    foursRow: ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'RShift'],   
     fivesRow: ['Ctrl', 'Win', 'Alt', 'Space', 'RAlt', 'RCtrl'],
     arrows: ['↑', '←', '↓', '→']
 }
@@ -27,12 +27,11 @@ let shiftPairs = {
         '=': '+',
         ';': ':',
         "'": '"',
-        '\x2F': '|',
+        '\\': '|',
         ',': '<',
         '.': '>',
         '/': '?'
 }
-
 
 // Create textarea and rules 
 function createTextarea() {
@@ -136,6 +135,64 @@ function fillKeyboard() {
                 }
 
                 mainKey.innerHTML = key;
+                if (typeof key == 'number') {
+                    mainKey.setAttribute('code', `Digit${key}`)
+                } else if (typeof key == 'string') {
+                    mainKey.setAttribute('code', `Key${key}`)
+                }
+
+                switch(mainKey.innerHTML) {
+                    case '`': mainKey.setAttribute('code', 'Backquote');
+                    break;
+                    case '-': mainKey.setAttribute('code', 'Minus');
+                    break;
+                    case '=': mainKey.setAttribute('code', 'Equal');
+                    break;
+                    case '[': mainKey.setAttribute('code', 'BracketLeft');
+                    break;
+                    case ']': mainKey.setAttribute('code', 'BracketRight');
+                    break;
+                    case ';': mainKey.setAttribute('code', 'Semicolon');
+                    break;
+                    case `'`: mainKey.setAttribute('code', 'Quote');
+                    break;
+                    case `/`: mainKey.setAttribute('code', 'Slash');
+                    break;
+                    case '\\': mainKey.setAttribute('code', 'Backslash');
+                    break;
+                    case ',': mainKey.setAttribute('code', 'Comma');
+                    break;
+                    case `.`: mainKey.setAttribute('code', 'Period');
+                    break;
+                    case 'Tab': mainKey.setAttribute('code', 'Tab')
+                    break;
+                    case 'Caps Lock': mainKey.setAttribute('code', 'CapsLock')
+                    break;
+                    case 'Shift': mainKey.setAttribute('code', 'ShiftLeft')
+                    break;
+                    case 'RShift': mainKey.setAttribute('code', 'ShiftRight')
+                    break;
+                    case 'Ctrl': mainKey.setAttribute('code', 'ControlLeft')
+                    break;
+                    case 'RCtrl': mainKey.setAttribute('code', 'ControlRight')
+                    break;
+                    case 'Win': mainKey.setAttribute('code', 'MetaLeft')
+                    break;
+                    case 'Alt': mainKey.setAttribute('code', 'AltLeft')
+                    break;
+                    case 'RAlt': mainKey.setAttribute('code', 'AltRight')
+                    break;
+                    case 'Enter': mainKey.setAttribute('code', 'Enter')
+                    break;
+                    case 'Backspace': mainKey.setAttribute('code', 'Backspace')
+                    break;
+                    case 'Delete': mainKey.setAttribute('code', 'Delete')
+                    break;
+                    case 'Space': mainKey.setAttribute('code', 'Space')
+                    break;
+                }
+
+                // mainKey.setAttribute('key', key.split(' ')
                 button.append(mainKey);
 
                 for (let property in shiftPairs) {
@@ -161,6 +218,16 @@ function fillKeyboard() {
                 let mainKey = document.createElement('div');
                 mainKey.classList.add('keyboard__key');
                 mainKey.innerHTML = key;
+                switch(mainKey.innerHTML) {
+                    case '↑': mainKey.setAttribute('code', 'ArrowUp')
+                    break;
+                    case '←': mainKey.setAttribute('code', 'ArrowLeft')
+                    break;
+                    case '↓': mainKey.setAttribute('code', 'ArrowDown')
+                    break;
+                    case '→': mainKey.setAttribute('code', 'ArrowRight')
+                    break;
+                }
                 button.append(mainKey);
                 arrowsWrapper.append(button);
                 keyboard.append(arrowsWrapper);
@@ -190,6 +257,34 @@ textarea.addEventListener('click', (e) => {
 keyboardIcon.addEventListener('click', () => {
     keyboard.classList.toggle('keyboard_hidden')
 });
+
+// Synchronize keyboard with virtual
+const keyboardKey = document.querySelectorAll('.keyboard__key')
+
+const synchronization = {
+    active: function(e) {
+        console.log(e)
+        keyboardKey.forEach(key => {
+            let keyAttribute = key.getAttribute('code');
+            if (keyAttribute == e.code) {
+                key.parentElement.classList.add('keyboard__key-container_activate');
+            }
+        })
+    },
+    remove: function(e) {
+        keyboardKey.forEach(key => {
+            let keyAttribute = key.getAttribute('code');
+            if (keyAttribute == e.code) {
+                key.parentElement.classList.remove('keyboard__key-container_activate');
+            }
+        })
+    }
+}
+
+document.addEventListener('keydown', synchronization.active)
+document.addEventListener('keyup', synchronization.remove)
+
+
 
 
 
