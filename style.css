@@ -175,7 +175,6 @@ body {
     max-width: 10%;
 }
 
-.keyboard__key-container:active,
 .keyboard__key-container_activate {
     position: relative;
     top: 2px;
