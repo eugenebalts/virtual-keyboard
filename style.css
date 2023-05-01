@@ -73,7 +73,6 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-
 /* KEYBOARD */
 .keyboard {
     position: fixed;
@@ -126,8 +125,6 @@ body {
     max-width: 50px;
 }
 
-
-
 .keyboard__key-container {
     display: flex;
     flex-direction: row;
@@ -145,7 +142,6 @@ body {
     user-select: none;
     box-shadow: -2px 2px 2px rgba(0, 0, 0, .6);
 }
-
 
 .keyboard__key {
     font-weight: 500;
