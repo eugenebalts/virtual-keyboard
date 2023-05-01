@@ -110,14 +110,23 @@ body {
 .keyboard__arrows {
     align-self: flex-end;
     display: grid;
+    grid-template-rows: repeat(3, 50px);
     grid-template-columns: repeat(3, 50px);
     gap: 10px;
 }
 
+.keyboard__arrows h2 {
+    text-align: center;
+    grid-column: 1/4;
+}
+
 .keyboard__arrows .keyboard__key-container:nth-child(1) {
-    grid-column: 2/4;
+    grid-column-start: 2;
+    grid-column-end: 4;
     max-width: 50px;
 }
+
+
 
 .keyboard__key-container {
     display: flex;
