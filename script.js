@@ -7,31 +7,31 @@ let keys = { //Rows of a symbols
     foursRow: ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'RShift'],   
     fivesRow: ['Ctrl', 'Win', 'Alt', 'Space', 'RAlt', 'RCtrl'],
     arrows: ['↑', '←', '↓', '→']
-}
+};
 
 let shiftPairs = {
-        '`': '~',
-        1: '!',
-        2: '@',
-        3: '#',
-        4: '$', 
-        5: '%', 
-        6: '^',
-        7: '&',
-        8: '*',
-        9: '(',
-        0: ')',
-        '[': '{',
-        ']': '}',
-        '-': '_',
-        '=': '+',
-        ';': ':',
-        "'": '"',
-        '\\': '|',
-        ',': '<',
-        '.': '>',
-        '/': '?'
-}
+    '`': '~',
+    1: '!',
+    2: '@',
+    3: '#',
+    4: '$', 
+    5: '%', 
+    6: '^',
+    7: '&',
+    8: '*',
+    9: '(',
+    0: ')',
+    '[': '{',
+    ']': '}',
+    '-': '_',
+    '=': '+',
+    ';': ':',
+    "'": '"',
+    '\\': '|',
+    ',': '<',
+    '.': '>',
+    '/': '?'
+};
 
 let ruShiftPairs = {
     1: '!',
@@ -103,7 +103,10 @@ createTextarea()
 // Create keyboard
 
 let language = 'En';
-language = localStorage.getItem('lang');
+
+if (localStorage.getItem('lang')) {
+    language = localStorage.getItem('lang');
+}
 
 function fillKeyboard(lang) {
     let keyboardDiv = document.createElement('div');
@@ -158,9 +161,9 @@ function fillKeyboard(lang) {
                 }
 
                 mainKey.innerHTML = key;
-                if (typeof key == 'number') {
+                if (typeof key === 'number') {
                     mainKey.setAttribute('code', `Digit${key}`)
-                } else if (typeof key == 'string') {
+                } else if (typeof key === 'string') {
                     mainKey.setAttribute('code', `Key${key}`)
                 }
 
@@ -243,7 +246,6 @@ function fillKeyboard(lang) {
                         break;
                         case ']': mainKey.innerHTML = 'Ъ';
                         break;
-
                         case 'A': mainKey.innerHTML = 'Ф';
                         break;
                         case 'S': mainKey.innerHTML = 'Ы';
@@ -268,7 +270,6 @@ function fillKeyboard(lang) {
                         break;
                         case '\\': mainKey.innerHTML = '\\';
                         break;
-
                         case 'Z': mainKey.innerHTML = 'Я';
                         break;
                         case 'X': mainKey.innerHTML = 'Ч';
@@ -300,7 +301,7 @@ function fillKeyboard(lang) {
                 if (lang == 'Ru') {
                     for (let property in ruShiftPairs) {
                         // Add additional symbols for shift-combinations (en)
-                        if (mainKey.innerHTML == property) {
+                        if (mainKey.innerHTML === property) {
                             let shiftKey = document.createElement('div');
                             shiftKey.classList.add('keyboard__shift-key')
                             shiftKey.innerHTML = ruShiftPairs[property];
@@ -310,7 +311,7 @@ function fillKeyboard(lang) {
                 } else {
                     for (let property in shiftPairs) {
                         // Add additional symbols for shift-combinations (en)
-                        if (key == property) {
+                        if (key === property) {
                             let shiftKey = document.createElement('div');
                             shiftKey.classList.add('keyboard__shift-key')
                             shiftKey.innerHTML = shiftPairs[property];
@@ -401,10 +402,10 @@ const keyboardFunc = {
         // console.log(e)
         keyboardKey.forEach(key => {
             let keyAttribute = key.getAttribute('code');
-            if (e.code == 'CapsLock' && keyAttribute == 'CapsLock') {
+            if (e.code === 'CapsLock' && keyAttribute === 'CapsLock') {
                 key.parentElement.classList.toggle('keyboard__key-container_activate');
                 key.parentElement.classList.contains('keyboard__key-container_activate') ? isCapsLock = true : isCapsLock = false;
-            } else if (keyAttribute == e.code) {
+            } else if (keyAttribute === e.code) {
                 key.parentElement.classList.add('keyboard__key-container_activate');
             }
         })
@@ -412,7 +413,7 @@ const keyboardFunc = {
     remove: function(e) {
         keyboardKey.forEach(key => {
             let keyAttribute = key.getAttribute('code');
-            if (keyAttribute == e.code && keyAttribute != 'CapsLock') {
+            if (keyAttribute === e.code && keyAttribute != 'CapsLock') {
                 key.parentElement.classList.remove('keyboard__key-container_activate');
             }
         })
@@ -433,12 +434,12 @@ const keyboardFunc = {
         }
     },
     shiftDown: function(e) {
-        if (e.code == 'ShiftLeft' || e.code == 'ShiftRight') {
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
             isShift = true;
         }
     },
     shiftUp: function(e) {
-        if (e.code == 'ShiftLeft' || e.code == 'ShiftRight') {
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
             isShift = false;
         }
     },
@@ -453,12 +454,12 @@ const keyboardFunc = {
         }
     },
     ctrlDown: function(e) {
-        if (e.code == 'ControlLeft' || e.code == 'ControlRight') {
+        if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
             isCtrl = true;
         }
     },
     ctrlUp: function(e) {
-        if (e.code == 'ControlLeft' || e.code == 'ControlRight') {
+        if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
             isCtrl = false;
         }
     },
@@ -473,12 +474,12 @@ const keyboardFunc = {
         }
     },
     altDown: function(e) {
-        if (e.code == 'AltLeft' || e.code == 'AltRight') {
+        if (e.code === 'AltLeft' || e.code === 'AltRight') {
             isAlt = true;
         }
     },
     altUp: function(e) {
-        if (e.code == 'AltLeft' || e.code == 'AltRight') {
+        if (e.code === 'AltLeft' || e.code === 'AltRight') {
             isAlt = false;
         }
     },
@@ -608,7 +609,7 @@ const keyboardFunc = {
                     case 'CapsLock': false;
                     break;
                     case 'Delete': 
-                        if (start == end) {
+                        if (start === end) {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end + 1, textarea.value.length * 3)
                         } else {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end, textarea.value.length * 3)
@@ -617,7 +618,7 @@ const keyboardFunc = {
                         end = start;;
                     break;
                     case 'Backspace':
-                        if (start == end) {
+                        if (start === end) {
                             textarea.value = textarea.value.slice(0, start - 1) + textarea.value.slice(end, textarea.value.length * 3)
                         } else {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end, textarea.value.length * 3)
@@ -628,7 +629,7 @@ const keyboardFunc = {
                     default:
                         if (isCapsLock) {
                             if (isCtrl) {
-                                if (keyAttribute == 'KeyA') {
+                                if (keyAttribute === 'KeyA') {
                                     false
                                 } else if (keyAttribute == 'KeyC') {
                                     document.execCommand("copy")
@@ -650,13 +651,13 @@ const keyboardFunc = {
                             } else key.parentElement.querySelector('.keyboard__shift-key') ? textarea.value = textarea.value.slice(0, start) + convert(key.parentElement.querySelector('.keyboard__shift-key').innerHTML) + textarea.value.slice(end, textarea.value.length * 3) : textarea.value = textarea.value.slice(0, start) + key.innerHTML.toUpperCase() + textarea.value.slice(end, textarea.value.length * 3);
                             
                         } else if (isCtrl) {
-                            if (keyAttribute == 'KeyA') {
+                            if (keyAttribute === 'KeyA') {
                                 false
-                            } else if (keyAttribute == 'KeyC') {
+                            } else if (keyAttribute === 'KeyC') {
                                 document.execCommand("copy")
                                 copied = textarea.value.slice(start, end);
                                 
-                            } else if (keyAttribute == 'KeyV') {
+                            } else if (keyAttribute === 'KeyV') {
                                 textarea.value =  textarea.value.slice(0, start) + copied + textarea.value.slice(end, textarea.value.length * 3)
                             }
                         } else {
@@ -664,7 +665,7 @@ const keyboardFunc = {
                         }
 
                         if (isCtrl) {
-                            if (keyAttribute == 'KeyA') {
+                            if (keyAttribute === 'KeyA') {
                                 start = 0;
                                 end = textarea.value.length;
                             } else if (keyAttribute == 'KeyV') {
@@ -775,18 +776,18 @@ const keyboardFunc = {
                             } else {
                                 start = start;
                                 end += 1;
-                                counterRight += 1;
+                                counterRight += 1
                             }
                         } else {
                             end += 1;
                             start = end;
-                            counterRight = 0;
-                            counterLeft = 0;
+                            counterRight = 0
+                            counterLeft = 0
                         } 
                     break;
-                    case 'Enter': textarea.value = textarea.value.slice(0, start) + '\n' + textarea.value.slice(end, textarea.value.length * 3);
-                    start += 1;
-                    end = start;
+                    case 'Enter': textarea.value = textarea.value.slice(0, start) + '\n' + textarea.value.slice(end, textarea.value.length * 3)
+                    start += 1
+                    end = start
                     // start +=
                     break;
                     case 'ControlLeft': false;
@@ -796,31 +797,31 @@ const keyboardFunc = {
                     case 'CapsLock': false;
                     break;
                     case 'Delete': 
-                        if (start == end) {
+                        if (start === end) {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end + 1, textarea.value.length * 3)
                         } else {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end, textarea.value.length * 3)
                         }
-                        start = start;
-                        end = start;;
+                        start = start
+                        end = start
                     break;
                     case 'Backspace':
-                        if (start == end) {
+                        if (start === end) {
                             textarea.value = textarea.value.slice(0, start - 1) + textarea.value.slice(end, textarea.value.length * 3)
                         } else {
                             textarea.value = textarea.value.slice(0, start) + textarea.value.slice(end, textarea.value.length * 3)
                         }
                         start -= 1;
-                        end = start;
+                        end = start
                     break;
                     default:
                         if (isCapsLock) {
                             if (isCtrl) {
-                                if (keyAttribute == 'KeyA') {
+                                if (keyAttribute === 'KeyA') {
                                     false
-                                } else if (keyAttribute == 'KeyC') {
+                                } else if (keyAttribute === 'KeyC') {
                                     document.execCommand("copy")
-                                    copied = textarea.value.slice(start, end);
+                                    copied = textarea.value.slice(start, end)
                                     
                                 } else if (keyAttribute == 'KeyV') {
                                     textarea.value =  textarea.value.slice(0, start) + copied + textarea.value.slice(end, textarea.value.length * 3)
@@ -838,50 +839,50 @@ const keyboardFunc = {
                             } else key.parentElement.querySelector('.keyboard__shift-key') ? textarea.value = textarea.value.slice(0, start) + convert(key.parentElement.querySelector('.keyboard__shift-key').innerHTML) + textarea.value.slice(end, textarea.value.length * 3) : textarea.value = textarea.value.slice(0, start) + key.innerHTML.toUpperCase() + textarea.value.slice(end, textarea.value.length * 3);
                             
                         } else if (isCtrl) {
-                            if (keyAttribute == 'KeyA') {
+                            if (keyAttribute === 'KeyA') {
                                 false
-                            } else if (keyAttribute == 'KeyC') {
+                            } else if (keyAttribute === 'KeyC') {
                                 document.execCommand("copy")
-                                copied = textarea.value.slice(start, end);
+                                copied = textarea.value.slice(start, end)
                                 
-                            } else if (keyAttribute == 'KeyV') {
+                            } else if (keyAttribute === 'KeyV') {
                                 textarea.value =  textarea.value.slice(0, start) + copied + textarea.value.slice(end, textarea.value.length * 3)
                             }
                         } else {
-                            textarea.value = textarea.value.slice(0, start) + key.innerHTML.toLowerCase() + textarea.value.slice(end, textarea.value.length * 3);
+                            textarea.value = textarea.value.slice(0, start) + key.innerHTML.toLowerCase() + textarea.value.slice(end, textarea.value.length * 3)
                         }
 
                         if (isCtrl) {
-                            if (keyAttribute == 'KeyA') {
-                                start = 0;
-                                end = textarea.value.length;
+                            if (keyAttribute === 'KeyA') {
+                                start = 0
+                                end = textarea.value.length
                             } else if (keyAttribute == 'KeyV') {
-                                start += copied.length;
-                                end = start;
+                                start += copied.length
+                                end = start
                             }
                         } else {
-                            start += 1;
-                            end = start;
+                            start += 1
+                            end = start
                         }
                 }
-                textarea.focus();
-                textarea.selectionStart = start;
-                textarea.selectionEnd = end;
+                textarea.focus()
+                textarea.selectionStart = start
+                textarea.selectionEnd = end
     },
     changeLanguage: function(e) {
-        if (e.code == 'ShiftLeft' || e.code == 'ShiftRight') {
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
             if (isAlt) {
-                if (language == 'Ru') {
+                if (language === 'Ru') {
                     language = 'En'
                 } else if (language = 'En') {
                     language = 'Ru'
                 }
                 document.querySelector('.keyboard').remove()
-                fillKeyboard(language);
-                document.querySelector('.keyboard').classList.remove('keyboard_hidden');
-                keyboard = document.querySelector('.keyboard');
-                keyboardContainer = document.querySelectorAll('.keyboard__key-container');
-                keyboardKey = document.querySelectorAll('.keyboard__key');
+                fillKeyboard(language)
+                document.querySelector('.keyboard').classList.remove('keyboard_hidden')
+                keyboard = document.querySelector('.keyboard')
+                keyboardContainer = document.querySelectorAll('.keyboard__key-container')
+                keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners()
                 localStorage.setItem('language', language)
             }
@@ -890,17 +891,17 @@ const keyboardFunc = {
     changeLanguageMouse: function(e) {
         if (this.classList.contains('keyboard__key_shift')) {
             if (isAlt) {
-                if (language == 'Ru') {
+                if (language === 'Ru') {
                     language = 'En'
                 } else if (language = 'En') {
                     language = 'Ru'
                 }
                 document.querySelector('.keyboard').remove()
-                fillKeyboard(language);
-                document.querySelector('.keyboard').classList.remove('keyboard_hidden');
-                keyboard = document.querySelector('.keyboard');
-                keyboardContainer = document.querySelectorAll('.keyboard__key-container');
-                keyboardKey = document.querySelectorAll('.keyboard__key');
+                fillKeyboard(language)
+                document.querySelector('.keyboard').classList.remove('keyboard_hidden')
+                keyboard = document.querySelector('.keyboard')
+                keyboardContainer = document.querySelectorAll('.keyboard__key-container')
+                keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners();
                 saveLanguage()
             }
@@ -912,18 +913,18 @@ function saveLanguage() {
     localStorage.setItem('lang', language)
 }
 
-saveLanguage();
-window.addEventListener('beforeunload', saveLanguage);
-document.addEventListener('keydown', keyboardFunc.active);
-document.addEventListener('keyup', keyboardFunc.remove);
-document.addEventListener('keydown', keyboardFunc.shiftDown);
-document.addEventListener('keyup', keyboardFunc.shiftUp);
+saveLanguage()
+window.addEventListener('beforeunload', saveLanguage)
+document.addEventListener('keydown', keyboardFunc.active)
+document.addEventListener('keyup', keyboardFunc.remove)
+document.addEventListener('keydown', keyboardFunc.shiftDown)
+document.addEventListener('keyup', keyboardFunc.shiftUp)
 document.addEventListener('keydown', keyboardFunc.ctrlDown)
 document.addEventListener('keyup', keyboardFunc.ctrlUp)
-document.addEventListener('keydown', keyboardFunc.keyboardWriting);
-document.addEventListener('keydown', keyboardFunc.altDown);
-document.addEventListener('keyup', keyboardFunc.altUp);
-document.addEventListener('keyup', keyboardFunc.changeLanguage);
+document.addEventListener('keydown', keyboardFunc.keyboardWriting)
+document.addEventListener('keydown', keyboardFunc.altDown)
+document.addEventListener('keyup', keyboardFunc.altUp)
+document.addEventListener('keyup', keyboardFunc.changeLanguage)
 
 function listeners() {
     keyboardContainer.forEach(key => { 
@@ -956,9 +957,3 @@ document.addEventListener('keydown', (event) => { //unbinding keys with code fro
         event.preventDefault()
     }
 })
-
-
-
-
-
-
