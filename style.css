@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -67,6 +68,7 @@ body {
     border: none;
     resize: none;
     outline: none;
+    user-select: unset;
 }
 
 .input-zone__textarea::placeholder {
