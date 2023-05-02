@@ -72,6 +72,7 @@ function createTextarea() {
         list.append(li)
     }
 
+    setRules('KEYBOARD FOR WINDOWS!')
     setRules('Click on textarea and keyboard-icon will open!')
     setRules('Combination "Alt + Shift" changes a language (EN, RU) - Alt must be pushed!!!')
     setRules('Combination "Ctrl + A" - selecting full text')
