@@ -940,7 +940,7 @@ document.addEventListener('keydown', keyboardFunc.altDown)
 document.addEventListener('keyup', keyboardFunc.altUp)
 document.addEventListener('keyup', keyboardFunc.changeLanguage)
 
-listeners = function () {
+listeners = () => {
     keyboardContainer.forEach((key) => {
         // console.log(key)
         key.addEventListener('mousedown', keyboardFunc.activeMouse)
