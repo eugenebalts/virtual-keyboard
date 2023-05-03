@@ -904,6 +904,10 @@ const keyboardFunc = {
                 keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners()
                 localStorage.setItem('language', language)
+                const capsButton = document.querySelector('.keyboard__key_caps-lock')
+                if (isCapsLock) {
+                    capsButton.classList.add('keyboard__key-container_activate')
+                }
             }
         }
     },
@@ -923,6 +927,10 @@ const keyboardFunc = {
                 keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners()
                 saveLanguage()
+                const capsButton = document.querySelector('.keyboard__key_caps-lock')
+                if (isCapsLock) {
+                    capsButton.classList.add('keyboard__key-container_activate')
+                }
             }
         }
     },
@@ -940,7 +948,7 @@ document.addEventListener('keydown', keyboardFunc.altDown)
 document.addEventListener('keyup', keyboardFunc.altUp)
 document.addEventListener('keyup', keyboardFunc.changeLanguage)
 
-listeners = function () {
+listeners = () => {
     keyboardContainer.forEach((key) => {
         // console.log(key)
         key.addEventListener('mousedown', keyboardFunc.activeMouse)
