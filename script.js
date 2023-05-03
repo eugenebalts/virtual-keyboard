@@ -904,6 +904,10 @@ const keyboardFunc = {
                 keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners()
                 localStorage.setItem('language', language)
+                const capsButton = document.querySelector('.keyboard__key_caps-lock')
+                if (isCapsLock) {
+                    capsButton.classList.add('keyboard__key-container_activate')
+                }
             }
         }
     },
@@ -923,6 +927,10 @@ const keyboardFunc = {
                 keyboardKey = document.querySelectorAll('.keyboard__key')
                 listeners()
                 saveLanguage()
+                const capsButton = document.querySelector('.keyboard__key_caps-lock')
+                if (isCapsLock) {
+                    capsButton.classList.add('keyboard__key-container_activate')
+                }
             }
         }
     },
