@@ -73,18 +73,18 @@ function createTextarea() {
     }
 
     setRules('KEYBOARD FOR WINDOWS!')
-    setRules('Click on textarea and keyboard-icon will open!')
-    setRules('Combination "Alt + Shift" changes a language (EN, RU) - Alt must be pushed!!!')
-    setRules('Combination "Ctrl + A" - selecting full text')
+    setRules('Click on textarea or keyboard-icon and keyboard will open')
+    setRules('Combination "Alt + Shift" changes a language (EN, RU) - Alt must be pushed')
+    setRules('Combination "Ctrl + A" - selecting your solution text')
     setRules('Combination "Ctrl + C" - copying selected text')
-    setRules('Combination "Ctrl + V" - pasting selected text')
+    setRules('Combination "Ctrl + V" - pasting copied text')
 
     const textareaContainer = document.createElement('div')
     textareaContainer.classList.add('input-zone__textarea-container')
 
     const textarea = document.createElement('textarea')
     textarea.classList.add('input-zone__textarea')
-    textarea.placeholder = 'Я хочу, чтоб ты написал в меня. Распиши меня полностью!'
+    textarea.placeholder = 'Write here'
 
     const keyboardIcon = document.createElement('div')
     keyboardIcon.classList.add('input-zone__keyboard-icon')
